@@ -1,19 +1,52 @@
 import * as React from 'react';
+import TopBar from './Components/TopBar';
+import CurrentSearchTitle from './Components/CurrentSearchTitle';
+import TotalProducts from './Components/TotalProducts';
+import ProductList from './Components/ProductList';
+import Pagination from './Components/Pagination';
 import './App.css';
 
-const logo = require('./logo.svg');
+interface State {
+  currentSearch: string;
+  products: Array<Object>;
+  totalProducts: number;
+  productsPerPage: number;
+  page: number;
+}
 
-class App extends React.Component {
+class App extends React.Component<Object, State> {
+  
+  constructor() {
+    super();
+
+    const fakeData: any = require('./fakes/api.json');
+
+    this.state = {
+      currentSearch: 'Lençol avulso',
+      products: fakeData.data,
+      totalProducts: fakeData.total,
+      productsPerPage: fakeData.limit,
+      page: fakeData.page
+    };
+
+  }
+
+  _onSubmit = (query: string) => {
+    this.setState({
+      currentSearch: query
+    });
+  }
+  
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="container">
+        <TopBar currentSearch={this.state.currentSearch} submitAction={this._onSubmit}/>
+        <CurrentSearchTitle currentSearch={this.state.currentSearch} />
+        <div className="product-containers">
+          <TotalProducts qty={this.state.productsPerPage} />
+          <ProductList products={this.state.products} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Pagination />
       </div>
     );
   }
