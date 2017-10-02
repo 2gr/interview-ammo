@@ -1,0 +1,35 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Kit de cama 210 fios",
+            "line": "Classic I",
+            "size": "Solteiro Extra",
+            "price": 29800,
+            "promo": 9800,
+            "images": [
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Kit de cama 210 fios",
+            "line": "Classic I",
+            "size": "Solteiro Extra",
+            "price": 29800,
+            "promo": 9800,
+            "images": [
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50",
+                "http://lorempixel.com/50/50"
+            ]
+        }
+    ],
+    "page": 1,
+    "limit": 20,
+    "total": 1
+}
