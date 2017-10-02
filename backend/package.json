@@ -1,0 +1,11 @@
+{
+    "name": "backend-api",
+    "main": "server.js",
+    "dependencies" : {
+        "express": "*",
+        "sequelize": "*",
+        "pg": "*",
+        "pg-hstore": "*",
+        "body-parser": "*"
+    }
+}
