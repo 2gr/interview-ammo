@@ -15,7 +15,6 @@ router.get('/', function(req, res) {
     });
 });
 
-router.use('products', router);
-
+app.use(router);
 app.listen(port);
 console.log("Listening on " + port);
