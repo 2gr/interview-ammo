@@ -8,7 +8,7 @@ class TotalProducts extends React.Component<Props, Object> {
 
     render() {
         return(
-            <div className="total-product">
+            <div className="total-products">
                 {this.props.qty} produtos encontrados
             </div>
         );

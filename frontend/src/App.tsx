@@ -3,12 +3,13 @@ import TopBar from './Components/TopBar';
 import CurrentSearchTitle from './Components/CurrentSearchTitle';
 import TotalProducts from './Components/TotalProducts';
 import ProductList from './Components/ProductList';
+import IProducts from './Interfaces/Product';
 import Pagination from './Components/Pagination';
 import './App.css';
 
 interface State {
   currentSearch: string;
-  products: Array<Object>;
+  products: Array<IProducts>;
   totalProducts: number;
   productsPerPage: number;
   page: number;
@@ -36,17 +37,26 @@ class App extends React.Component<Object, State> {
       currentSearch: query
     });
   }
+
+  getMaxPages = () => {
+    // Quebrado e provavelmente não deveria estar aqui
+    if (this.state.totalProducts < this.state.productsPerPage) {
+      return this.state.totalProducts;
+    }
+    
+    return Math.ceil(this.state.totalProducts / this.state.productsPerPage);
+  }
   
   render() {
     return (
       <div className="container">
         <TopBar currentSearch={this.state.currentSearch} submitAction={this._onSubmit}/>
         <CurrentSearchTitle currentSearch={this.state.currentSearch} />
-        <div className="product-containers">
-          <TotalProducts qty={this.state.productsPerPage} />
+        <div className="products">
+          <TotalProducts qty={this.state.totalProducts} />
           <ProductList products={this.state.products} />
-        </div>
-        <Pagination />
+          <Pagination page={this.state.page} productsPerPage={this.state.productsPerPage} maxPages={this.getMaxPages()} />
+        </div>  
       </div>
     );
   }

@@ -1,24 +1,87 @@
-.App {
-  text-align: center;
+body {
+  background-color: #F3F1F1;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.logo {
+  display: inline;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.logo img {
+  height: 20px;
+  padding: 25px;
+}
+
+.search-input-container {
+  float: right;
+  padding: 25px;
+}
+
+.current-search-title {
+  font-size: 2.5em;
+  padding: 30px;
+  background-color: #EDE6E6;
+}
+
+.total-products {
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.products {
+  margin: 1em 10em;
   padding: 20px;
-  color: white;
 }
 
-.App-intro {
-  font-size: large;
+.product-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.product-image-container {
+  margin-left: 10px;
+  max-width: 33%;
+  display: inline;
+}
+
+.product-category {
+  display: inline;
+  max-width: 33%;
+}
+
+.product-name {
+  font-size: 1.2em;
+}
+
+.product-details {
+  font-size: .7em;
+  font-weight: 100;
+}
+
+.product-image {
+  max-width: 50px;
+  margin: 5px;
+}
+
+.pagination {
+  margin-top: 30px;
+}
+
+.products-per-page {
+  display: inline;
+}
+
+.pages {
+  float: right;
+}
+
+.page {
+  display: inline;
+  margin: 5px;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.page.page-current {
+  background-color: #FFF;
 }
