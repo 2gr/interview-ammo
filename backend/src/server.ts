@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as Sequelize from 'sequelize';
+import Product from "./Model/Product";
 
 var app = express();
 
@@ -12,16 +13,7 @@ var port = process.env.port || 3001;
 var router = express.Router();
 
 router.get('/', async function(req: any, res: any) {
-
-    var sequelize = new Sequelize('ammo_teste', 'harry', 'senhateste', {dialect: 'postgres'});
-
-    const Product = sequelize.define(
-        'products', {
-            id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
-            name: {type: Sequelize.STRING, allowNull: false}
-        }
-    );
-
+  
     var query = req.query.query || 'Lençol';
     var page = req.query.page || '1';
     var products = await Product.findAndCountAll({

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const bodyParser = require("body-parser");
 const express = require("express");
-const Sequelize = require("sequelize");
+const Product_1 = require("./Model/Product");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -18,14 +18,9 @@ var port = process.env.port || 3001;
 var router = express.Router();
 router.get('/', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        var sequelize = new Sequelize('ammo_teste', 'harry', 'senhateste', { dialect: 'postgres' });
-        const Product = sequelize.define('products', {
-            id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-            name: { type: Sequelize.STRING, allowNull: false }
-        });
         var query = req.query.query || 'Lençol';
         var page = req.query.page || '1';
-        var products = yield Product.findAndCountAll({
+        var products = yield Product_1.default.findAndCountAll({
             where: { name: { $ilike: '%teste%' } },
             limit: 20,
             offset: 0
