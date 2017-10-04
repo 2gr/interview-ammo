@@ -15,11 +15,13 @@
         "reflect-metadata": "^0.1.10",
         "sequelize-cli": "^3.0.0",
         "sequelize-typescript": "^0.5.0",
+        "ts-node": "^3.3.0",
         "tsc-watch": "1.0.7",
         "tslint": "^5.7.0",
         "typescript": "^2.5.3"
     },
     "scripts": {
-        "start": "tsc-watch --onSuccess \"node ./dist/server.js\""
+        "start": "tsc-watch --onSuccess \"node ./dist/server.js\"",
+        "migrate": "ts-node src/Migrations/2017_10_04_135330_creates_products_table.ts"
     }
 }

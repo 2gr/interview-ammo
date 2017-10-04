@@ -14,15 +14,23 @@ var router = express.Router();
 
 router.get('/', async function(req: any, res: any) {
   
-    var query = req.query.query || 'Lençol';
-    var page = req.query.page || '1';
+    var query = req.query.query || 'Kit';
+    var page = parseInt(req.query.page) || 1;
+    var limit = parseInt(req.query.limit) || 2;
+
+    var offset = limit * (page - 1);
+
     var products = await Product.findAndCountAll({
-        where: {name: {$ilike: '%teste%'}},
-        limit: 20,
-        offset: 0
+        where: {name: {$ilike:  `%${query}%`}},
+        limit: limit,
+        offset: offset
     });
 
-    res.json (products);
+    res.json ({
+        data: products.rows,
+        page: page,
+        total: products.count
+    });
 });
 
 app.use(router);
