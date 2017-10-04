@@ -74,14 +74,14 @@ class App extends React.Component<Object, State> {
 
   }
 
-
   changeProductsPerPageAction = async (productsPerPage: number) => {
     const json: any = await this.fetchData(this.state.currentSearch, productsPerPage, 1);
 
     this.setState({
       products: json.data,
       totalProducts: json.total,
-      page: json.page
+      productsPerPage: productsPerPage,
+      page: 1
     });
 
   }
