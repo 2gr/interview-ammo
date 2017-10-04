@@ -24,7 +24,7 @@ class App extends React.Component<Object, State> {
       currentSearch: 'Kit',
       products: [],
       totalProducts: 0,
-      productsPerPage: 20,
+      productsPerPage: 1,
       page: 1
     };
 
@@ -43,8 +43,9 @@ class App extends React.Component<Object, State> {
   }
 
   // Weird async duplication. Is this normal?
-  fetchData = async (query: string = 'Kit') => {
-    const response = await fetch(`http://localhost:3001?query=${query}`);
+  // FIXME: ProductsPerPage definitions are scattered
+  fetchData = async (query: string = 'Kit', limit: number = 1) => {
+    const response = await fetch(`http://localhost:3001?query=${query}&limit=${limit}`);
     return await response.json();
   }
 
@@ -65,7 +66,7 @@ class App extends React.Component<Object, State> {
   getMaxPages = () => {
     // Quebrado e provavelmente não deveria estar aqui
     if (this.state.totalProducts < this.state.productsPerPage) {
-      return this.state.totalProducts;
+      return 1;
     }
     
     return Math.ceil(this.state.totalProducts / this.state.productsPerPage);
