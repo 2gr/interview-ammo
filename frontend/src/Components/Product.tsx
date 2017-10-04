@@ -3,6 +3,21 @@ import IProduct from '../Interfaces/Product';
 
 class Product extends React.Component<IProduct, Object> {
 
+    displayPrice = () => {
+        if (this.props.promo) {
+            return(
+                <div className="product-price">
+                    <span className="product-price-old">{this.props.price}</span> por <span className="product-price-current">{this.props.promo}</span>
+                </div>
+            );
+        }
+        return (
+            <div className="product-price">
+                <span className="product-price-current">{this.props.price}</span>
+            </div>
+        );
+        }
+
     render() {
         return(
             <div className="product">
@@ -13,7 +28,7 @@ class Product extends React.Component<IProduct, Object> {
                     <span className="product-name">{this.props.name}</span>
                     <span className="product-details">{`${this.props.line} - ${this.props.size}`}</span>
                 </div>
-                <span className="product-price">{`${this.props.price} - ${this.props.promo}`}</span>
+                {this.displayPrice()}
             </div>
         );
     }

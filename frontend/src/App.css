@@ -73,6 +73,11 @@ body {
   padding: 20px;
 }
 
+.product-price-old {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
 .pagination {
   margin-top: 25px;
   padding-top: 25px;
