@@ -23,8 +23,10 @@ body {
 }
 
 .total-products {
-  text-decoration: underline;
+  display: inline-block;
   text-transform: uppercase;
+  border-bottom: 3px solid #FFD700;
+  padding-bottom: 5px;
 }
 
 .products {
