@@ -12,7 +12,7 @@ class Pagination extends React.Component<Props, Object> {
 
     _onClick = (event: any) => {
         event.preventDefault();
-        this.props.changePageAction(event.target.text);
+        this.props.changePageAction(event.target.dataset.pageindex);
     }
 
     // FIXME: I'm a component, extract me please
@@ -73,7 +73,7 @@ class Pagination extends React.Component<Props, Object> {
                             if (page === this.props.page) {
                                 currentClass = currentClass + ' page-current';
                             }
-                            return <a href={'#'}className={currentClass} key={page} onClick={this._onClick}>{page}</a>;
+                            return <a href={'#'} className={currentClass} data-pageindex={page} key={page} onClick={this._onClick}>{page}</a>;
                         })
                     }
                 </div>
