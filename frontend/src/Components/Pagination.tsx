@@ -4,9 +4,15 @@ interface Props {
     productsPerPage: number;
     page: number;
     maxPages: number;
+    changePageAction: any;
 }
 
 class Pagination extends React.Component<Props, Object> {
+
+    _onClick = (event: any) => {
+        event.preventDefault();
+        this.props.changePageAction(event.target.text);
+    }
 
     render() {
         return(
@@ -25,7 +31,7 @@ class Pagination extends React.Component<Props, Object> {
                             if (page === this.props.page) {
                                 currentClass = currentClass + ' page-current';
                             }
-                            return <div className={currentClass} key={page}>{page}</div>;
+                            return <a href={'#'}className={currentClass} key={page} onClick={this._onClick}>{page}</a>;
                         })
                     }
                 </div>
