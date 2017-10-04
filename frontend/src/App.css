@@ -40,20 +40,24 @@ body {
 
 .product-image-container {
   margin-left: 10px;
-  max-width: 33%;
-  display: inline;
+  width: 33%;
+  display: inline-block;
 }
 
 .product-category {
-  display: inline;
-  max-width: 33%;
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+  padding: 13px;
 }
 
 .product-name {
   font-size: 1.2em;
+  display: block;
 }
 
 .product-details {
+  display: block;
   font-size: .7em;
   font-weight: 100;
 }
@@ -61,6 +65,12 @@ body {
 .product-image {
   max-width: 50px;
   margin: 5px;
+}
+
+.product-price {
+  float: right;
+  vertical-align: top;
+  padding: 20px;
 }
 
 .pagination {
@@ -80,6 +90,8 @@ body {
   margin: 5px;
   padding: 15px 20px;
   border-radius: 10px;
+  text-decoration: none;
+  color: #000;
 }
 
 .page.page-current {
