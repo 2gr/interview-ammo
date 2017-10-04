@@ -25,18 +25,16 @@ class SearchInput extends React.Component<Props, State> {
         });
     }
 
-    _onSubmit = (event: any) => {
-        this.props.submitAction(this.state.currentSearch);
-
+    _onKeyDown = (event: any) => {
+        if (event.keyCode === 13) {
+            this.props.submitAction(this.state.currentSearch);
+        }
     }
-
-    // FIX: Change input submit for an onKeyPress
-    // https://stackoverflow.com/questions/27827234/keypress-event-handling-in-reactjs
+    
     render() {
         return(
             <div className="search-input-container">
-                <input type="text" value={this.state.currentSearch} onChange={this._onChange}/>
-                <input type="submit" value="Submit" onClick={this._onSubmit} />
+                <input type="text" value={this.state.currentSearch} onChange={this._onChange} onKeyDown={this._onKeyDown}/>
             </div>
         );
     }
