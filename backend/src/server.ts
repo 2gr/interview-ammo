@@ -22,12 +22,7 @@ router.get('/', async function(req: any, res: any) {
         offset: 0
     });
 
-    res.json ({
-        "message": "OK!",
-        "query" : query,
-        "page": page,
-        "data": products
-    });
+    res.json (products);
 });
 
 app.use(router);

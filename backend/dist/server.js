@@ -25,12 +25,7 @@ router.get('/', function (req, res) {
             limit: 20,
             offset: 0
         });
-        res.json({
-            "message": "OK!",
-            "query": query,
-            "page": page,
-            "data": products
-        });
+        res.json(products);
     });
 });
 app.use(router);
