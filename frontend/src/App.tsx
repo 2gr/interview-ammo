@@ -54,7 +54,7 @@ class App extends React.Component<Object, State> {
       currentSearch: query
     });
 
-    const json: any = await this.fetchData(query);
+    const json: any = await this.fetchData(query, this.state.productsPerPage, this.state.page);
 
     this.setState({
       products: json.data,
