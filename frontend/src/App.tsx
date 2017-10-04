@@ -20,21 +20,45 @@ class App extends React.Component<Object, State> {
   constructor() {
     super();
 
-    const fakeData: any = require('./fakes/api.json');
-
     this.state = {
-      currentSearch: 'Lençol avulso',
-      products: fakeData.data,
-      totalProducts: fakeData.total,
-      productsPerPage: fakeData.limit,
-      page: fakeData.page
+      currentSearch: 'Kit',
+      products: [],
+      totalProducts: 0,
+      productsPerPage: 20,
+      page: 1
     };
 
   }
 
-  _onSubmit = (query: string) => {
+  async componentDidMount() {
+
+    const json: any = await this.fetchData();
+
+    this.setState({
+      products: json.data,
+      totalProducts: json.total,
+      page: json.page
+    });
+
+  }
+
+  // Weird async duplication. Is this normal?
+  fetchData = async (query: string = 'Kit') => {
+    const response = await fetch(`http://localhost:3001?query=${query}`);
+    return await response.json();
+  }
+
+  _onSubmit = async (query: string) => {
     this.setState({
       currentSearch: query
+    });
+
+    const json: any = await this.fetchData(query);
+
+    this.setState({
+      products: json.data,
+      totalProducts: json.total,
+      page: json.page
     });
   }
 
