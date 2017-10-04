@@ -12,7 +12,14 @@ class Pagination extends React.Component<Props, Object> {
 
     _onClick = (event: any) => {
         event.preventDefault();
-        this.props.changePageAction(event.target.dataset.pageindex);
+
+        let target = event.target.dataset.pageindex;
+        
+        if (target > this.props.maxPages || target < 1) {
+            return;
+        }
+
+        this.props.changePageAction(target);
     }
 
     // FIXME: I'm a component, extract me please
@@ -58,6 +65,7 @@ class Pagination extends React.Component<Props, Object> {
         return [page - 2, page - 1, page, page + 1, page + 2];
     }
 
+    // FIXME: Kill this implementation w/ fire, so it may never live again
     render() {
         return(
             <div className="pagination">
@@ -65,6 +73,8 @@ class Pagination extends React.Component<Props, Object> {
                     {this.productsPerPageBuilder()}
                 </div>
                 <div className="pages">
+                    <a href={'#'} className={this.props.page == 1 ? "page disabled" : "page"} data-pageindex={1} key="first" onClick={this._onClick}>First</a>
+                    <a href={'#'} className={this.props.page == 1 ? "page disabled" : "page"} data-pageindex={this.props.page - 1} key="prev" onClick={this._onClick}>Prev</a>
                     {
                         (this.getPagesToShow()).map((value, index) => {
                             let page = value;
@@ -76,6 +86,8 @@ class Pagination extends React.Component<Props, Object> {
                             return <a href={'#'} className={currentClass} data-pageindex={page} key={page} onClick={this._onClick}>{page}</a>;
                         })
                     }
+                    <a href={'#'} className={this.props.page == this.props.maxPages ? "page disabled" : "page"} data-pageindex={this.props.page + 1} key="next" onClick={this._onClick}>Next</a>
+                    <a href={'#'} className={this.props.page == this.props.maxPages ? "page disabled" : "page"} data-pageindex={this.props.maxPages} key="last" onClick={this._onClick}>Last</a>
                 </div>
             </div>
         );

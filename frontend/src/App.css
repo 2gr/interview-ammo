@@ -108,3 +108,9 @@ body {
 .page.page-current {
   background-color: #FFF;
 }
+
+.page.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #888;
+}
