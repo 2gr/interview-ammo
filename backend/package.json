@@ -1,11 +1,22 @@
 {
     "name": "backend-api",
     "main": "server.js",
-    "dependencies" : {
+    "dependencies": {
+        "body-parser": "*",
         "express": "*",
-        "sequelize": "*",
         "pg": "*",
         "pg-hstore": "*",
-        "body-parser": "*"
+        "sequelize": "*"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.16.5",
+        "@types/express": "^4.0.37",
+        "@types/sequelize": "^4.0.75",
+        "tsc-watch": "1.0.7",
+        "tslint": "^5.7.0",
+        "typescript": "^2.5.3"
+    },
+    "scripts": {
+        "start": "tsc-watch --onSuccess \"node ./dist/server.js\""
     }
 }
