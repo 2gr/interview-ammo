@@ -18,7 +18,7 @@ class Pagination extends React.Component<Props, Object> {
     // FIXME: I'm a component, extract me please
 
     _onChange = (event: any) => {
-        this.props.changeProductsPerPageAction(event.target.value);
+        this.props.changeProductsPerPageAction(parseInt(event.target.value));
     }
 
     productsPerPageBuilder = () => {
