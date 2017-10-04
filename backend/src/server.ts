@@ -1,6 +1,8 @@
-var express = require('express');
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as Sequelize from 'sequelize';
+
 var app = express();
-var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -9,9 +11,8 @@ var port = process.env.port || 3001;
 
 var router = express.Router();
 
-router.get('/', async function(req, res) {
+router.get('/', async function(req: any, res: any) {
 
-    const Sequelize = require('sequelize');
     var sequelize = new Sequelize('ammo_teste', 'harry', 'senhateste', {dialect: 'postgres'});
 
     const Product = sequelize.define(
