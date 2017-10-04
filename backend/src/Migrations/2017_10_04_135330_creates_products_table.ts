@@ -23,5 +23,12 @@ Product.sync({force: true}).then(() => {
         price: "R$198,00",
         promo: "R$58,00"
     });
+    Product.create({
+        name: "Kit de cama 300 fios",
+        line: "Premium II",
+        size: "Solteiro",
+        price: "R$500,00",
+        promo: ""
+    });
 });
 
