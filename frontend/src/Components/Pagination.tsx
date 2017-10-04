@@ -41,6 +41,23 @@ class Pagination extends React.Component<Props, Object> {
         );
     }
 
+    getPagesToShow = () => {
+
+        let pagesToShow = 5;
+        let page: number = this.props.page;
+        let lastPage: number = this.props.maxPages;
+
+        if (lastPage < pagesToShow) {
+            return Array.from(new Array(lastPage), (x, i) => i + 1);
+        } else if (page < (Math.round(pagesToShow / 2))) {
+            return Array.from(new Array(pagesToShow), (x, i) => i + 1);
+        } else if (page > (lastPage - Math.round(pagesToShow / 2))) {
+            return Array.from(new Array(lastPage), (x, i) => i + 1).slice(-pagesToShow);
+        }
+
+        return [page - 2, page - 1, page, page + 1, page + 2];
+    }
+
     render() {
         return(
             <div className="pagination">
@@ -49,8 +66,8 @@ class Pagination extends React.Component<Props, Object> {
                 </div>
                 <div className="pages">
                     {
-                        (Array.from(new Array(this.props.maxPages), (x, i) => i)).map((value, index) => {
-                            let page = index + 1;
+                        (this.getPagesToShow()).map((value, index) => {
+                            let page = value;
                             let currentClass = 'page';
 
                             if (page === this.props.page) {
