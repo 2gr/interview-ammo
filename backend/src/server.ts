@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as cors from 'cors';
 import * as Sequelize from 'sequelize';
 import Product from "./Model/Product";
 
@@ -7,6 +8,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 
 var port = process.env.port || 3001;
 
