@@ -74,6 +74,18 @@ class App extends React.Component<Object, State> {
 
   }
 
+
+  changeProductsPerPageAction = async (productsPerPage: number) => {
+    const json: any = await this.fetchData(this.state.currentSearch, productsPerPage, 1);
+
+    this.setState({
+      products: json.data,
+      totalProducts: json.total,
+      page: json.page
+    });
+
+  }
+
   getMaxPages = () => {
     // Quebrado e provavelmente não deveria estar aqui
     if (this.state.totalProducts < this.state.productsPerPage) {
@@ -91,7 +103,7 @@ class App extends React.Component<Object, State> {
         <div className="products">
           <TotalProducts qty={this.state.totalProducts} />
           <ProductList products={this.state.products} />
-          <Pagination changePageAction={this.changePageAction} page={this.state.page} productsPerPage={this.state.productsPerPage} maxPages={this.getMaxPages()} />
+          <Pagination changeProductsPerPageAction={this.changeProductsPerPageAction} changePageAction={this.changePageAction} page={this.state.page} productsPerPage={this.state.productsPerPage} maxPages={this.getMaxPages()} />
         </div>  
       </div>
     );
