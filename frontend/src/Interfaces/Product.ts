@@ -3,8 +3,8 @@ interface IProduct {
     name: string;
     line: string;
     size: string;
-    price: number;
-    promo: number;
+    price: string;
+    promo: string;
     images: Array<String>;
 }
 
