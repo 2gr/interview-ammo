@@ -9,6 +9,14 @@ interface Props {
 class ProductList extends React.Component<Props, Object> {
 
     render() {
+        if (this.props.products.length === 0) {
+            return(
+                <div className="product-container">
+                    <p>Não existem produtos para a busca realizada</p>
+                </div>
+            );
+        }
+
         return(
             <div className="product-container">
                 {this.props.products.map((product: IProduct) => <Product key={product.id} product={product} /> )}
