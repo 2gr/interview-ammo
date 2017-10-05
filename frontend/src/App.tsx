@@ -43,7 +43,6 @@ class App extends React.Component<Object, State> {
   }
 
   // Weird async duplication. Is this normal?
-  // FIXME: ProductsPerPage definitions are scattered
   fetchData = async (query: string = 'Kit', limit: number = 1, page: number = 1) => {
     const response = await fetch(`http://localhost:3001?query=${query}&limit=${limit}&page=${page}`);
     return await response.json();
