@@ -1,7 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as cors from 'cors';
-import * as Sequelize from 'sequelize';
 import Product from "./Model/Product";
 
 var app = express();

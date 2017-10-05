@@ -2,8 +2,10 @@
     "name": "backend-api",
     "main": "server.js",
     "dependencies": {
+        "@types/dotenv": "^4.0.1",
         "body-parser": "*",
         "cors": "^2.8.4",
+        "dotenv": "^4.0.0",
         "express": "*",
         "pg": "*",
         "pg-hstore": "*",

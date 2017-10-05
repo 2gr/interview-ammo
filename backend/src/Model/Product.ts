@@ -1,5 +1,8 @@
 import * as Sequelize from 'sequelize';
-var sequelize = new Sequelize('ammo_teste', 'harry', 'senhateste', {dialect: 'postgres'});
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {dialect: 'postgres'});
 
 const Product = sequelize.define(
     'products', {
