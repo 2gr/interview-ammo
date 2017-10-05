@@ -85,15 +85,6 @@ class App extends React.Component<Object, State> {
     });
 
   }
-
-  getMaxPages = () => {
-    // Quebrado e provavelmente não deveria estar aqui
-    if (this.state.totalProducts < this.state.productsPerPage) {
-      return 1;
-    }
-    
-    return Math.ceil(this.state.totalProducts / this.state.productsPerPage);
-  }
   
   render() {
     return (
@@ -103,7 +94,7 @@ class App extends React.Component<Object, State> {
         <div className="products">
           <TotalProducts qty={this.state.totalProducts} />
           <ProductList products={this.state.products} />
-          <Pagination changeProductsPerPageAction={this.changeProductsPerPageAction} changePageAction={this.changePageAction} page={this.state.page} productsPerPage={this.state.productsPerPage} maxPages={this.getMaxPages()} />
+          <Pagination changeProductsPerPageAction={this.changeProductsPerPageAction} changePageAction={this.changePageAction} page={this.state.page} productsPerPage={this.state.productsPerPage} totalProducts={this.state.totalProducts} />
         </div>  
       </div>
     );
