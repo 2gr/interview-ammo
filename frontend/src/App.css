@@ -1,0 +1,116 @@
+body {
+  background-color: #F3F1F1;
+}
+
+.logo {
+  display: inline;
+}
+
+.logo img {
+  height: 20px;
+  padding: 25px;
+}
+
+.search-input-container {
+  float: right;
+  padding: 25px;
+}
+
+.current-search-title {
+  font-size: 2.5em;
+  padding: 30px;
+  background-color: #EDE6E6;
+}
+
+.total-products {
+  display: inline-block;
+  text-transform: uppercase;
+  border-bottom: 3px solid #FFD700;
+  padding-bottom: 5px;
+}
+
+.products {
+  margin: 1em 10em;
+  padding: 20px;
+}
+
+.product-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.product-image-container {
+  margin-left: 10px;
+  width: 33%;
+  display: inline-block;
+}
+
+.product-category {
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+  padding: 13px;
+}
+
+.product-name {
+  font-size: 1.2em;
+  display: block;
+}
+
+.product-details {
+  display: block;
+  font-size: .7em;
+  font-weight: 100;
+}
+
+.product-image {
+  max-width: 50px;
+  margin: 5px;
+}
+
+.product-price {
+  float: right;
+  vertical-align: top;
+  padding: 20px;
+}
+
+.product-price-old {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.pagination {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top-width: 2px;
+  border-top-color: #888;
+  border-top-style: solid;
+}
+
+.products-per-page {
+  display: inline;
+}
+
+.pages {
+  float: right;
+}
+
+.page {
+  display: inline;
+  margin: 5px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.page.page-current {
+  background-color: #FFF;
+}
+
+.page.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #888;
+}
