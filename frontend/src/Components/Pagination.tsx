@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ProductsPerPageSelector from './ProductsPerPageSelector';
 
 interface Props {
     productsPerPage: number;
@@ -22,32 +23,6 @@ class Pagination extends React.Component<Props, Object> {
         this.props.changePageAction(target);
     }
 
-    // FIXME: I'm a component, extract me please
-
-    _onChange = (event: any) => {
-        this.props.changeProductsPerPageAction(parseInt(event.target.value));
-    }
-
-    productsPerPageBuilder = () => {
-
-        const options: Array<number> = [1, 10, 20, 30];
-        const productsPerPage: number = this.props.productsPerPage;
-
-        if (options.indexOf(productsPerPage) === -1) {
-            options.push(productsPerPage);
-            options.sort();
-        }
-
-        return (
-            <select onChange={this._onChange}>
-                {options.map((option) => {
-                    return <option value={option}>{option} produtos por página </option>
-                })}
-
-            </select>
-        );
-    }
-
     getPagesToShow = () => {
 
         let pagesToShow = 5;
@@ -69,9 +44,7 @@ class Pagination extends React.Component<Props, Object> {
     render() {
         return(
             <div className="pagination">
-                <div className="products-per-page">
-                    {this.productsPerPageBuilder()}
-                </div>
+                <ProductsPerPageSelector productsPerPage={this.props.productsPerPage} changeProductsPerPageAction={this.props.changeProductsPerPageAction} />
                 <div className="pages">
                     <a href={'#'} className={this.props.page == 1 ? "page disabled" : "page"} data-pageindex={1} key="first" onClick={this._onClick}>First</a>
                     <a href={'#'} className={this.props.page == 1 ? "page disabled" : "page"} data-pageindex={this.props.page - 1} key="prev" onClick={this._onClick}>Prev</a>
