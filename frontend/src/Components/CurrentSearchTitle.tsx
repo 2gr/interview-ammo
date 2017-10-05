@@ -1,5 +1,3 @@
-// Bad name :\
-
 import * as React from 'react';
 
 interface Props {
@@ -11,7 +9,7 @@ class CurrentSearchTitle extends React.Component<Props, Object> {
     render() {
         return(
             <div className="current-search-title">
-                Searching for: {this.props.currentSearch}
+                {this.props.currentSearch}
             </div>
         );
     }
