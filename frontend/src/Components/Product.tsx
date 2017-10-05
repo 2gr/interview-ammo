@@ -1,19 +1,25 @@
 import * as React from 'react';
 import IProduct from '../Interfaces/Product';
 
-class Product extends React.Component<IProduct, Object> {
+interface Props {
+    product: IProduct;
+}
+
+class Product extends React.Component<Props, Object> {
+
+    product = this.props.product;
 
     displayPrice = () => {
-        if (this.props.promo) {
+        if (this.product.promo) {
             return(
                 <div className="product-price">
-                    <span className="product-price-old">{this.props.price}</span> por <span className="product-price-current">{this.props.promo}</span>
+                    <span className="product-price-old">{this.product.price}</span> por <span className="product-price-current">{this.product.promo}</span>
                 </div>
             );
         }
         return (
             <div className="product-price">
-                <span className="product-price-current">{this.props.price}</span>
+                <span className="product-price-current">{this.product.price}</span>
             </div>
         );
         }
@@ -22,11 +28,11 @@ class Product extends React.Component<IProduct, Object> {
         return(
             <div className="product">
                     <div className="product-image-container">
-                    {this.props.images.map((link: any, index: any) => <img className="product-image" key={index} src={link} />)}
+                    {this.product.images.map((link: any, index: any) => <img className="product-image" key={index} src={link} />)}
                 </div>
                 <div className="product-category">
-                    <span className="product-name">{this.props.name}</span>
-                    <span className="product-details">{`${this.props.line} - ${this.props.size}`}</span>
+                    <span className="product-name">{this.product.name}</span>
+                    <span className="product-details">{`${this.product.line} - ${this.product.size}`}</span>
                 </div>
                 {this.displayPrice()}
             </div>

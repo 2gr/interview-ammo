@@ -11,7 +11,7 @@ class ProductList extends React.Component<Props, Object> {
     render() {
         return(
             <div className="product-container">
-                {this.props.products.map((product) => <Product key={product.id} id={product.id} name={product.name} line={product.line} size={product.size} price={product.price} promo={product.promo} images={product.images} /> )}
+                {this.props.products.map((product: IProduct) => <Product key={product.id} product={product} /> )}
             </div>
         );
     }
